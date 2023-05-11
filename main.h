@@ -6,9 +6,13 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
+char *_strcat(char *dest, char *src);
 pid_t exec(char **argv);
+char *_getpath(char *path);
 
 #endif
