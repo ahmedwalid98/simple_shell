@@ -21,8 +21,8 @@ break;
 
 
 
-lineptr_copy = malloc(sizeof(char) * nchars_read);
-if (lineptr_copy == NULL)
+input_copy = malloc(sizeof(char) * nchars_read);
+if (input_copy == NULL)
 {
 perror("allocation");
 return (-1);

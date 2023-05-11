@@ -9,6 +9,6 @@
 
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
-void exec(char **argv);
+pid_t exec(char **argv);
 
 #endif
