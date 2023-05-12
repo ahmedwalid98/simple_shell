@@ -18,10 +18,13 @@ if (nchars_read == -1)
 {
 break;
 }
+if (_strcmp(input, "exit") == 0)
+{
+exit(0);
+}
 
 
-
-input_copy = malloc(sizeof(char) * nchars_read);
+input_copy = malloc(sizeof(char *) * nchars_read);
 if (input_copy == NULL)
 {
 perror("allocation");
