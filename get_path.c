@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * _getpath - get the path from the command
+ * @pcommand: the command
+ * Return: the actual path
+ */
 char *_getpath(char *pcommand)
 {
 char *path, *path_copy, *path_token, *fp;
@@ -11,7 +15,7 @@ if (path)
 path_copy = _strdup(path);
 command_len = _strlen(pcommand);
 path_token = strtok(path_copy, ":");
-while(path_token != NULL)
+while (path_token != NULL)
 {
 dir_len = strlen(path_token);
 fp = malloc(command_len + dir_len + 2);

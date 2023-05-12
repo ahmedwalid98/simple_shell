@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * main - entry point
+ * @argc: arguments number
+ * @argv: pointer to some arguments
+ * Return: 0 if success
+ */
 int main(int argc, char **argv)
 {
 extern char **environ;
@@ -46,7 +52,7 @@ num_tokens++;
 token = strtok(NULL, delim);
 }
 num_tokens++;
-argv = malloc(sizeof(char * ) * num_tokens);
+argv = malloc(sizeof(char *) * num_tokens);
 token = strtok(input_copy, delim);
 for (i = 0; token != NULL; i++)
 {
