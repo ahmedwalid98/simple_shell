@@ -1,6 +1,7 @@
 #include "main.h"
 int main(int argc, char **argv)
 {
+extern char **environ;
 char *input = NULL;
 size_t input_size = 0;
 int i = 0;
@@ -8,6 +9,7 @@ char *input_copy = NULL;
 const char *delim = " \n";
 ssize_t nchars_read;
 char *token;
+char **s;
 int num_tokens = 0;
 (void)argc;
 while (1)
@@ -22,20 +24,21 @@ if (_strcmp(input, "exit") == 0)
 {
 exit(0);
 }
-
-
+if (_strcmp(input, "env") == 0)
+{
+s = environ;
+for (; *s; s++)
+{
+printf("%s\n", *s);
+}
+}
 input_copy = malloc(sizeof(char *) * nchars_read);
 if (input_copy == NULL)
 {
 perror("allocation");
 return (-1);
 }
-
-
-
 _strcpy(input_copy, input);
-
-
 token = strtok(input, delim);
 while (token != NULL)
 {
@@ -43,10 +46,7 @@ num_tokens++;
 token = strtok(NULL, delim);
 }
 num_tokens++;
-
-
 argv = malloc(sizeof(char * ) * num_tokens);
-
 token = strtok(input_copy, delim);
 for (i = 0; token != NULL; i++)
 {

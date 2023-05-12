@@ -1,5 +1,4 @@
 #include "main.h"
-
 pid_t exec(char **argv)
 {
 int status;
@@ -22,7 +21,6 @@ if (execve(real_command, argv, NULL) == -1)
 write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
 exit(EXIT_FAILURE);
 }
-
 }
 else
 {
