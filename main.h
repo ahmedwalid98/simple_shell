@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+extern char **environ;
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);

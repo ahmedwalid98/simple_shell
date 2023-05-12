@@ -7,7 +7,7 @@
  */
 int main(int argc, char **argv)
 {
-extern char **environ;
+
 char *input = NULL;
 size_t input_size = 0;
 int i = 0;
