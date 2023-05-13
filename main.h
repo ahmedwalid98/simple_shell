@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 extern char **environ;
+char **tokenize_input(char *input, const char *delim);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);

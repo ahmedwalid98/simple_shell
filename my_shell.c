@@ -5,19 +5,15 @@
  * @argv: pointer to some arguments
  * Return: 0 if success
  */
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
 {
-
 char *input = NULL;
 size_t input_size = 0;
-int i = 0;
-char *input_copy = NULL;
 const char *delim = " \n";
 ssize_t nchars_read;
-char *token;
 char **s;
-int num_tokens = 0;
-(void)argc;
+size_t len;
+char **tokens;
 while (1)
 {
 write(STDOUT_FILENO, "$ ", 2);
@@ -33,38 +29,19 @@ exit(0);
 if (_strcmp(input, "env") == 0)
 {
 s = environ;
-for (; *s; s++)
+for (s = environ; *s; s++)
 {
-printf("%s\n", *s);
+len = _strlen(*s);
+write(STDOUT_FILENO, *s, len);
+write(STDOUT_FILENO, "\n", 1);
 }
 }
-input_copy = malloc(sizeof(char *) * nchars_read);
-if (input_copy == NULL)
+else
 {
-perror("allocation");
-return (-1);
+tokens = tokenize_input(input, delim);
+exec(tokens);
+free(tokens);
 }
-_strcpy(input_copy, input);
-token = strtok(input, delim);
-while (token != NULL)
-{
-num_tokens++;
-token = strtok(NULL, delim);
 }
-num_tokens++;
-argv = malloc(sizeof(char *) * num_tokens);
-token = strtok(input_copy, delim);
-for (i = 0; token != NULL; i++)
-{
-argv[i] = malloc(sizeof(char) * _strlen(token));
-_strcpy(argv[i], token);
-token = strtok(NULL, delim);
-}
-argv[i] = NULL;
-
-exec(argv);
-}
-free(input_copy);
-free(input);
 return (0);
 }
