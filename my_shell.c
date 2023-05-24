@@ -16,7 +16,6 @@ size_t len;
 char **tokens;
 while (1)
 {
-write(STDOUT_FILENO, "$ ", 2);
 nchars_read = getline(&input, &input_size, stdin);
 if (nchars_read == -1)
 {
