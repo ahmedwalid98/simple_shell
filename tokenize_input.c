@@ -11,7 +11,7 @@ char **tokenize_input(char *input, const char *delim)
 char **argv;
 char *input_copy;
 char *token;
-int i, num_tokens = 0;
+int i, j,num_tokens = 0;
 int nchars_read = _strlen(input);
 input_copy = malloc(sizeof(char *) * nchars_read);
 if (input_copy == NULL)
@@ -28,10 +28,23 @@ token = strtok(NULL, delim);
 }
 num_tokens++;
 argv = malloc(sizeof(char *) * num_tokens);
+if (argv == NULL)
+{
+	free(input_copy);
+	return (NULL);
+}
 token = strtok(input_copy, delim);
 for (i = 0; token != NULL; i++)
 {
 argv[i] = malloc(sizeof(char) * _strlen(token));
+if (argv[i] == NULL)
+{
+	for (j = 0; j <= i; j++)
+		free(argv[j]);
+	free(argv);
+	free(input_copy);
+	return (NULL);
+}
 _strcpy(argv[i], token);
 token = strtok(NULL, delim);
 }

@@ -24,6 +24,8 @@ break;
 }
 if (_strcmp(input, "exit") == 0)
 {
+free(tokens);
+free(s);
 exit(0);
 }
 if (_strcmp(input, "env") == 0)
@@ -43,5 +45,6 @@ exec(tokens);
 free(tokens);
 }
 }
+free(s);
 return (0);
 }

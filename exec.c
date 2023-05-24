@@ -17,6 +17,7 @@ pid = fork();
 if (pid == -1)
 {
 perror("fork");
+free(real_command);
 exit(EXIT_FAILURE);
 }
 else if (pid == 0)
@@ -24,6 +25,7 @@ else if (pid == 0)
 if (execve(real_command, argv, NULL) == -1)
 {
 write(STDOUT_FILENO, "./hsh: No such file or directory\n", 33);
+free(real_command);
 exit(EXIT_FAILURE);
 }
 }
@@ -32,5 +34,6 @@ else
 waitpid(pid, &status, 0);
 }
 }
+free(real_command);
 return (pid);
 }

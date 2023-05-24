@@ -19,6 +19,8 @@ while (path_token != NULL)
 {
 dir_len = strlen(path_token);
 fp = malloc(command_len + dir_len + 2);
+if (fp == NULL)
+	return (NULL);
 _strcpy(fp, path_token);
 _strcat(fp, "/");
 _strcat(fp, pcommand);
@@ -26,14 +28,17 @@ _strcat(fp, "\0");
 if (stat(fp, &buffer) == 0)
 {
 free(path_copy);
+free(fp);
 return (fp);
 }
 else
 {
 path_token = strtok(NULL, ":");
 }
+free(fp);
 }
 free(path_copy);
+
 if (stat(pcommand, &buffer) == 0)
 {
 return (pcommand);
