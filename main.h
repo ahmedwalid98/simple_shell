@@ -9,6 +9,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+extern char **environ;
+char **tokenize_input(char *input, const char *delim);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
@@ -17,5 +19,6 @@ char *_getpath(char *pcommand);
 int _strcmp(char *s1, char *s2);
 char *get_path(char *pcommand);
 char *_strdup(char *str);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif

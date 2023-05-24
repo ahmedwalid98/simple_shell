@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * exec - execute specific process
+ * @argv: pointer to some arguments
+ * Return: process id
+ */
 pid_t exec(char **argv)
 {
 int status;
@@ -27,5 +32,5 @@ else
 waitpid(pid, &status, 0);
 }
 }
-return pid;
+return (pid);
 }
