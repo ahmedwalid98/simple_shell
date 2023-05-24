@@ -20,7 +20,7 @@ write(STDOUT_FILENO, "$ ", 2);
 nchars_read = getline(&input, &input_size, stdin);
 if (nchars_read == -1)
 {
-break;
+return (1);
 }
 if (_strcmp(input, "exit") == 0)
 {
@@ -40,7 +40,6 @@ else
 {
 tokens = tokenize_input(input, delim);
 exec(tokens);
-free(tokens);
 }
 }
 return (0);
