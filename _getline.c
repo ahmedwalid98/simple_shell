@@ -38,7 +38,6 @@ return (count);
 }
 else
 {
-free(*lineptr);
 return (-1);
 }
 }

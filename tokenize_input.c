@@ -50,5 +50,8 @@ token = strtok(NULL, delim);
 }
 argv[i] = NULL;
 free(input_copy);
+for (j = 0; argv[j] != NULL; j++)
+	free(argv[j]);
+free(argv);
 return (argv);
 }
