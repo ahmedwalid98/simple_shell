@@ -33,7 +33,6 @@ if (size == 0)
 if (count > 0)
 {
 (*lineptr)[count] = '\0';
-free(*lineptr);
 return (count);
 }
 else
@@ -51,7 +50,6 @@ if (count + 1 >= *n)
 if (*lineptr == NULL)
 {
 	perror("failed to update allocation");
-	free(*lineptr);
 	return (-1);
 }
 }

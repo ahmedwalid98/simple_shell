@@ -20,7 +20,7 @@ write(STDOUT_FILENO, "$ ", 2);
 nchars_read = _getline(&input, &input_size, stdin);
 if (nchars_read == -1)
 {
-break;
+return (1);
 }
 if (_strcmp(input, "exit") == 0)
 {
